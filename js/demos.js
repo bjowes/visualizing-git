@@ -69,6 +69,55 @@ define([], function () {
     ]
   }
 
+    var upstreamChangesMaster = {
+    title: 'Upstream Changes master',
+    key: 'upstream-changes-master',
+    message: 'Someone else has been working on master!',
+    currentBranch: "feature",
+    commitData: [
+      {
+        "id": "e137e9b",
+        "tags": [],
+        "message": "first commit",
+        "parent": "initial",
+      },
+      {
+        "id": "84c98fe",
+        "parent": "e137e9b",
+        "tags": [ "master", "origin/master" ],
+      },
+      {
+        "id": "1c016b6",
+        "parent": "e137e9b",
+        "tags": [ "feature", "origin/feature", "HEAD" ],
+      }
+    ],
+    originData: [
+      {
+        "id": "e137e9b",
+        "tags": [],
+        "message": "first commit",
+        "parent": "initial",
+      },
+      {
+        "id": "84c98fe",
+        "parent": "e137e9b",
+        "tags": [  ],
+      },
+      {
+        "id": "1bca8fe",
+        "parent": "84c98fe",
+        "tags": [ "master", "HEAD" ],
+      },
+      {
+        "id": "1c016b6",
+        "parent": "e137e9b",
+        "tags": [ "feature" ],
+      },
+    ]
+  }
+
+
   var rewrittenHistory = {
     title: 'Rewritten Remote History',
     key: 'rewritten-history',
@@ -138,39 +187,38 @@ define([], function () {
         "id": "84c98fe",
         "parent": "e137e9b",
         "tags": [
-          "master"
         ],
         "cx": 140,
         "cy": 360,
         "branchless": false
       },
       {
-        "id": "1c016b6",
-        "parent": "e137e9b",
-        "tags": [],
-        "cx": 140,
-        "cy": 270,
+        "id": "0231d12",
+        "parent": "84c98fe",
+        "tags": [
+          "master"
+        ],
         "branchless": false
       },
       {
-        "id": "fd0af32",
-        "tags": [
-          "feature",
-          "HEAD"
-        ],
-        "parent": "1c016b6",
+        "id": "2f015b4",
+        "parent": "84c98fe",
+        "tags": [],
         "cx": 230,
         "cy": 270,
         "branchless": false
       },
       {
-        "id": "5041e4c",
-        "tags": [],
-        "parent": "fd0af32",
+        "id": "ee02e36",
+        "tags": [
+          "feature",
+          "HEAD"
+        ],
+        "parent": "2f015b4",
         "cx": 320,
         "cy": 270,
-        "branchless": true
-      }
+        "branchless": false
+      },
     ]
 
   }
@@ -240,8 +288,117 @@ define([], function () {
   }
 
   var cherryPick = {
-    title: 'Cherry Pick',
-    key: 'cherry-pick',
+    title: 'Cherry Pick feature',
+    key: 'cherry-pick-feature',
+    message: 'Let\'s pick some commits',
+    currentBranch: "feature",
+    commitData: [
+      {
+        "id": "e137e9b",
+        "tags": [],
+        "message": "first commit",
+        "parent": "initial",
+        "cx": 50,
+        "cy": 318,
+        "branchless": false
+      },
+      {
+        "id": "790dd94",
+        "tags": [],
+        "parent": "e137e9b",
+        "cx": 140,
+        "cy": 318,
+        "branchless": false
+      },
+      {
+        "id": "96e9ce7",
+        "tags": [
+        ],
+        "parent": "790dd94",
+        "cx": 230,
+        "cy": 318,
+        "branchless": false
+      },
+      {
+        "id": "44db644",
+        "tags": [],
+        "parent": "96e9ce7",
+        "cx": 320,
+        "cy": 318,
+        "branchless": false
+      },
+      {
+        "id": "06127d7",
+        "tags": [],
+        "parent": "44db644",
+        "cx": 410,
+        "cy": 318,
+        "branchless": false
+      },
+      {
+        "id": "60c6c2c",
+        "tags": [],
+        "parent": "790dd94",
+        "cx": 230,
+        "cy": 228,
+        "branchless": false
+      },
+      {
+        "id": "9fa3801",
+        "tags": [
+          "[bugfix]",
+        ],
+        "parent": "60c6c2c",
+        "cx": 320,
+        "cy": 228,
+        "branchless": false
+      },
+      {
+        "id": "88c0321",
+        "tags": [
+        ],
+        "parent": "9fa3801",
+        "cx": 320,
+        "cy": 228,
+        "branchless": false
+      },
+      {
+        "id": "103fea1",
+        "tags": [
+          "[refactor]"
+        ],
+        "parent": "88c0321",
+        "cx": 320,
+        "cy": 228,
+        "branchless": false
+      },
+      {
+        "id": "8f7c801",
+        "tags": [
+          "feature",
+          "HEAD"
+        ],
+        "parent": "103fea1",
+        "cx": 320,
+        "cy": 228,
+        "branchless": false
+      },
+      {
+        "id": "e8ce346",
+        "tags": [
+          "master"
+        ],
+        "parent": "06127d7",
+        "cx": 500,
+        "cy": 318,
+        "branchless": false
+      },
+    ]
+  }
+
+    var cherryPick2 = {
+    title: 'Cherry Pick release',
+    key: 'cherry-pick-release',
     message: 'Let\'s pick some commits',
     commitData: [
       {
@@ -299,7 +456,7 @@ define([], function () {
         "id": "8f7c801",
         "tags": [
           "release",
-          "HEAD"
+          "[1.0-rc1]"
         ],
         "parent": "60c6c2c",
         "cx": 320,
@@ -357,6 +514,6 @@ define([], function () {
   }
 
   return [
-    free, freeWithRemote, upstreamChanges, rewrittenHistory, revert, cherryPick
+    free, freeWithRemote, upstreamChanges, upstreamChangesMaster, rewrittenHistory, revert, cherryPick, cherryPick2
   ]
 })
